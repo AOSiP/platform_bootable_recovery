@@ -559,13 +559,13 @@ void ScreenRecoveryUI::SetColor(UIElement e) const {
       if (fastbootd_logo_enabled_)
         gr_color(0xfd, 0xd8, 0x35, 255);
       else
-        gr_color(0xf8, 0x90, 0xff, 255);
+        gr_color(0x3C, 0xB3, 0x71, 255);
       break;
     case UIElement::HEADER:
       if (fastbootd_logo_enabled_)
         gr_color(0xfd, 0xd8,0x35, 255);
       else
-        gr_color(0xf8, 0x90, 0xff, 255);
+        gr_color(0x3C, 0xB3, 0x71, 255);
       break;
     case UIElement::MENU:
       gr_color(0xd8, 0xd8, 0xd8, 255);
@@ -575,10 +575,10 @@ void ScreenRecoveryUI::SetColor(UIElement e) const {
       if (fastbootd_logo_enabled_)
         gr_color(0xe6, 0x51, 0x00, 255);
       else
-        gr_color(0x7c, 0x4d, 0xff, 255);
+        gr_color(0x3C, 0xB3, 0x71, 255);
       break;
     case UIElement::MENU_SEL_BG_ACTIVE:
-      gr_color(0, 156, 100, 255);
+      gr_color(0, 60, 179, 113);
       break;
     case UIElement::MENU_SEL_FG:
       if (fastbootd_logo_enabled_)
@@ -797,7 +797,7 @@ void ScreenRecoveryUI::draw_menu_and_text_buffer_locked(
   int y = margin_height_;
 
   if (menu_) {
-    auto& logo = fastbootd_logo_enabled_ ? fastbootd_logo_ : lineage_logo_;
+    auto& logo = fastbootd_logo_enabled_ ? fastbootd_logo_ : kronic_logo_;
     auto logo_width = gr_get_width(logo.get());
     auto logo_height = gr_get_height(logo.get());
     auto centered_x = ScreenWidth() / 2 - logo_width / 2;
@@ -1010,7 +1010,7 @@ bool ScreenRecoveryUI::Init(const std::string& locale) {
   no_command_text_ = LoadLocalizedBitmap("no_command_text");
   error_text_ = LoadLocalizedBitmap("error_text");
 
-  lineage_logo_ = LoadBitmap("logo_image");
+  kronic_logo_ = LoadBitmap("logo_image");
   back_icon_ = LoadBitmap("ic_back");
   back_icon_sel_ = LoadBitmap("ic_back_sel");
   if (android::base::GetBoolProperty("ro.boot.dynamic_partitions", false) ||
@@ -1311,8 +1311,8 @@ int ScreenRecoveryUI::SelectMenu(const Point& point) {
   if (menu_) {
     if (!menu_->IsMain()) {
       // Back arrow hitbox
-      const static int logo_width = gr_get_width(lineage_logo_.get());
-      const static int logo_height = gr_get_height(lineage_logo_.get());
+      const static int logo_width = gr_get_width(kronic_logo_.get());
+      const static int logo_height = gr_get_height(kronic_logo_.get());
       const static int icon_w = gr_get_width(back_icon_.get());
       const static int icon_h = gr_get_height(back_icon_.get());
       const static int centered_x = ScreenWidth() / 2 - logo_width / 2;
